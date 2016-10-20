@@ -359,6 +359,8 @@ void InotifyWatcher::process_inotify_event(
         pending_flags |= W_PENDING_RECURSIVE;
       }
 
+      w_log(W_LOG_OFF, "XXXXXX inotify mask=%x %s %.*s\n",
+          ine->mask, flags_label, name->len, name->buf);
       w_log(W_LOG_DBG, "add_pending for inotify mask=%x %.*s\n",
           ine->mask, name->len, name->buf);
       w_pending_coll_add(coll, name, now, pending_flags);
